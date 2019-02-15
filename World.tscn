@@ -1,0 +1,625 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://World.gd" type="Script" id=1]
+[ext_resource path="res://Characters/fondo.png" type="Texture" id=2]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=3]
+[ext_resource path="res://Characters/alien.png" type="Texture" id=4]
+[ext_resource path="res://Characters/alien patada.png" type="Texture" id=5]
+[ext_resource path="res://Characters/alien puny.png" type="Texture" id=6]
+[ext_resource path="res://Player2.gd" type="Script" id=7]
+[ext_resource path="res://Characters/skeleton.png" type="Texture" id=8]
+[ext_resource path="res://Characters/patada skeleton.png" type="Texture" id=9]
+[ext_resource path="res://Characters/puny skeleton.png" type="Texture" id=10]
+[ext_resource path="res://Characters/black.png" type="Texture" id=11]
+[ext_resource path="res://Player1_health.gd" type="Script" id=12]
+[ext_resource path="res://Characters/Alien stand.png" type="Texture" id=13]
+[ext_resource path="res://Player2_health.gd" type="Script" id=14]
+[ext_resource path="res://Cherry.gd" type="Script" id=15]
+[ext_resource path="res://Characters/fruita.png" type="Texture" id=16]
+[ext_resource path="res://Player1_deaths.gd" type="Script" id=17]
+[ext_resource path="res://Player2_deaths.gd" type="Script" id=18]
+[ext_resource path="res://Avenza - Game On [No Copyright Music].ogg" type="AudioStream" id=19]
+[ext_resource path="res://Hit_sound.wav" type="AudioStream" id=20]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "leg_hit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "punch",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 6.4697
+height = 12.5323
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "leg_hit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "punch",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 19.061
+height = 55.9495
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.099, 32.1923 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.101563, 1, 0, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 1, 0, 0, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxFlat" id=8]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.171875, 1, 0, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="StyleBoxFlat" id=9]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 1, 0, 0, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[sub_resource type="CircleShape2D" id=10]
+
+custom_solver_bias = 0.0
+radius = 12.0
+
+[node name="World" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="." index="0"]
+
+position = Vector2( 644.863, 363.794 )
+scale = Vector2( 0.673026, 0.673026 )
+texture = ExtResource( 2 )
+
+[node name="Player1" type="KinematicBody2D" parent="." index="1" groups=[
+"player",
+]]
+
+editor/display_folded = true
+position = Vector2( 1093.89, 622.488 )
+scale = Vector2( 2.5, 2.5 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player1" index="0"]
+
+position = Vector2( -1.81013, -5.39391 )
+scale = Vector2( 0.255623, 0.255623 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1" index="1"]
+
+position = Vector2( -2.31897, -4.84875 )
+shape = SubResource( 2 )
+
+[node name="Ray" type="RayCast2D" parent="Player1" index="2"]
+
+visible = false
+enabled = true
+exclude_parent = true
+cast_to = Vector2( -11, 0 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="RayDown" type="RayCast2D" parent="Player1" index="3"]
+
+rotation = 1.5708
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 10, 0 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="Player2" type="KinematicBody2D" parent="." index="2" groups=[
+"player",
+]]
+
+editor/display_folded = true
+position = Vector2( 198.016, 605.757 )
+scale = Vector2( 0.680381, 0.680381 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player2" index="0"]
+
+frames = SubResource( 3 )
+animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2" index="1"]
+
+shape = SubResource( 4 )
+
+[node name="Ray" type="RayCast2D" parent="Player2" index="2"]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector2( -40, 0 )
+collision_mask = 1
+
+[node name="Walls" type="Node2D" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( 488.981, -121.549 )
+
+[node name="Wall" type="StaticBody2D" parent="Walls" index="0"]
+
+editor/display_folded = true
+position = Vector2( 139.41, 774.975 )
+scale = Vector2( 15.0625, 0.34375 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Walls/Wall" index="0"]
+
+position = Vector2( 0.0156221, -0.777511 )
+scale = Vector2( 0.0320589, 0.0366177 )
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall" index="1"]
+
+shape = SubResource( 5 )
+
+[node name="Wall2" type="StaticBody2D" parent="Walls" index="1"]
+
+editor/display_folded = true
+position = Vector2( 147.167, 590.323 )
+scale = Vector2( 1.34027, 0.265623 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Walls/Wall2" index="0"]
+
+position = Vector2( 0.142426, 1.51944 )
+scale = Vector2( 0.0325078, 0.0369643 )
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2" index="1"]
+
+shape = SubResource( 5 )
+
+[node name="Health_bars" type="Control" parent="." index="4"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 39.0
+margin_bottom = 39.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Player1_health" type="ProgressBar" parent="Health_bars" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 62.0
+margin_top = 22.0
+margin_right = 214.0
+margin_bottom = 49.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+percent_visible = false
+script = ExtResource( 12 )
+_sections_unfolded = [ "Percent", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Next_to_Player1_health" type="Sprite" parent="Health_bars" index="1"]
+
+position = Vector2( 46.8938, 35.1704 )
+texture = ExtResource( 13 )
+
+[node name="Player2_health" type="ProgressBar" parent="Health_bars" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1220.0
+margin_top = 53.0
+margin_right = 1377.0
+margin_bottom = 84.0
+rect_rotation = 180.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 8 )
+custom_styles/bg = SubResource( 9 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = true
+percent_visible = false
+script = ExtResource( 14 )
+_sections_unfolded = [ "Percent", "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Next_to_Player2_health2" type="Sprite" parent="Health_bars" index="3"]
+
+position = Vector2( 1236.4, 34.248 )
+scale = Vector2( 0.392035, 0.392035 )
+texture = ExtResource( 8 )
+
+[node name="Fruits" type="Node" parent="." index="5"]
+
+editor/display_folded = true
+
+[node name="Cherry" type="KinematicBody2D" parent="Fruits" index="0" groups=[
+"fruit",
+]]
+
+editor/display_folded = true
+position = Vector2( 900.125, 621.25 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Fruits/Cherry" index="0"]
+
+texture = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fruits/Cherry" index="1"]
+
+position = Vector2( -0.625, 1.75 )
+shape = SubResource( 10 )
+
+[node name="Ray" type="RayCast2D" parent="Fruits/Cherry" index="2"]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 25, 0 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ray2" type="RayCast2D" parent="Fruits/Cherry" index="3"]
+
+rotation = 4.36332
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 25, 0 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ray3" type="RayCast2D" parent="Fruits/Cherry" index="4"]
+
+rotation = 1.22173
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 25, 0 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ray4" type="RayCast2D" parent="Fruits/Cherry" index="5"]
+
+rotation = 2.96706
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 25, 0 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="Text" type="Node2D" parent="." index="6"]
+
+[node name="FPS" type="TextEdit" parent="Text" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 11.0
+margin_top = 698.0
+margin_right = 81.0
+margin_bottom = 719.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+text = "098"
+readonly = true
+highlight_current_line = false
+syntax_highlighting = false
+show_line_numbers = false
+highlight_all_occurrences = false
+override_selected_font_color = false
+context_menu_enabled = true
+smooth_scrolling = false
+v_scroll_speed = 80.0
+hiding_enabled = 0
+wrap_lines = false
+caret_block_mode = false
+caret_blink = false
+caret_blink_speed = 0.65
+caret_moving_by_right_click = true
+
+[node name="Player1_deaths" type="TextEdit" parent="Text" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 61.0
+margin_top = 52.0
+margin_right = 146.0
+margin_bottom = 76.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+text = ""
+readonly = false
+highlight_current_line = false
+syntax_highlighting = false
+show_line_numbers = false
+highlight_all_occurrences = false
+override_selected_font_color = false
+context_menu_enabled = true
+smooth_scrolling = false
+v_scroll_speed = 80.0
+hiding_enabled = 0
+wrap_lines = false
+caret_block_mode = false
+caret_blink = false
+caret_blink_speed = 0.65
+caret_moving_by_right_click = true
+script = ExtResource( 17 )
+_sections_unfolded = [ "Margin" ]
+
+[node name="Player2_deaths" type="TextEdit" parent="Text" index="2"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 1075.0
+margin_top = 56.0
+margin_right = 1155.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+text = ""
+readonly = false
+highlight_current_line = false
+syntax_highlighting = false
+show_line_numbers = false
+highlight_all_occurrences = false
+override_selected_font_color = false
+context_menu_enabled = true
+smooth_scrolling = false
+v_scroll_speed = 80.0
+hiding_enabled = 0
+wrap_lines = false
+caret_block_mode = false
+caret_blink = false
+caret_blink_speed = 0.65
+caret_moving_by_right_click = true
+script = ExtResource( 18 )
+_sections_unfolded = [ "Margin" ]
+
+[node name="Sound" type="Node" parent="." index="7"]
+
+editor/display_folded = true
+
+[node name="Music" type="AudioStreamPlayer" parent="Sound" index="0"]
+
+stream = ExtResource( 19 )
+volume_db = -10.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="Hit" type="AudioStreamPlayer" parent="Sound" index="1"]
+
+stream = ExtResource( 20 )
+volume_db = 7.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+
